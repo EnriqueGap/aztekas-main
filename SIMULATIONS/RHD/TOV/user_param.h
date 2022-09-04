@@ -26,3 +26,4 @@
 double rhol, pl, vx1l, vx2l, vx3l;
 double rhor, pr, vx1r, vx2r, vx3r;
 double x_0;
+int test_module();
