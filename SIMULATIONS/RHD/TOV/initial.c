@@ -26,15 +26,15 @@ void Initial()
    {
       if(grid.X1[i] < x_0)
       {
-         U(RHO,i) = rhol;
-         U(PRE,i) = pl;
-         U(VX1,i) = vx1l;
+         U(RHO,i) = 0;
+         U(PRE,i) = 0;
+         U(VX1,i) = 0;
       }
       else
       {
-         U(RHO,i) = rhor;
-         U(PRE,i) = pr;
-         U(VX1,i) = vx1r;
+         U(RHO,i) = 0;
+         U(PRE,i) = 0;
+         U(VX1,i) = 0;
       }
    }
 
