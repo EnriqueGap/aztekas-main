@@ -6,13 +6,13 @@
 % OUTPUT FILE AND DIRECTORY %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 outputdirectory = ./TEST/
-outputfile      = tov_
+outputfile      = wd_
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % RESTART SIMULATION (1 -> true, 0 -> false) %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 restart_simulation = 0
-restartfile = ./TEST/tov_0.dat
+restartfile = ./TEST/wd_0.dat
 restart_filecount = 0
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -67,19 +67,11 @@ K = 1.6666666666666666
 % BOUNDARY AND INITIAL PARAMETERS %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% LEFT STATE
-rhol = 10.0
-pl   = 13.33
-vx1l = 0.0
-vx2l = 0.0
-vx3l = 0.0
+% massDensity
+massDensity = 1E6
+% Politopic Equation P = K*rho^gamma
 
-% RIGHT STATE
-rhor = 1.0
-pr   = 0.000000001
-vx1r = 0.0
-vx2r = 0.0
-vx3r = 0.0
+polytropicExp = 1.6666666666
+polytropicK = 3.119E12
 
-% INTERFACE
-x_0 = 0.5
+% o los pares (1.33333333, 4.883E14) y (1.5, 3.7E13)

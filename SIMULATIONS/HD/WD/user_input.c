@@ -43,60 +43,20 @@ int User_Parameters(char const *paramfile_name)
 
          if(fscanf (paramfile, "%s = %s", t_key, t_value) == 2)
          {
-            if(strcmp(t_key,"rhol")==0)
+            if(strcmp(t_key,"massDensity")==0)
             {
-               rhol = atof(t_value);
+               massDensity = atof(t_value);
             }
-
-            if(strcmp(t_key,"pl")==0)
+            
+            if(strcmp(t_key,"polytropicExp")==0)
             {
-               pl = atof(t_value);
+               polytropicExp = atof(t_value);
             }
-
-            if(strcmp(t_key,"vx1l")==0)
+            
+            if(strcmp(t_key,"polytropicK")==0)
             {
-               vx1l = atof(t_value);
-            }
-
-            if(strcmp(t_key,"vx2l")==0)
-            {
-               vx2l = atof(t_value);
-            }
-
-            if(strcmp(t_key,"vx3l")==0)
-            {
-               vx3l = atof(t_value);
-            }
-
-            if(strcmp(t_key,"rhor")==0)
-            {
-               rhor = atof(t_value);
-            }
-
-            if(strcmp(t_key,"pr")==0)
-            {
-               pr = atof(t_value);
-            }
-
-            if(strcmp(t_key,"vx1r")==0)
-            {
-               vx1r = atof(t_value);
-            }
-
-            if(strcmp(t_key,"vx2r")==0)
-            {
-               vx2r = atof(t_value);
-            }
-
-            if(strcmp(t_key,"vx3r")==0)
-            {
-               vx3r = atof(t_value);
-            }
-
-            if(strcmp(t_key,"x_0")==0)
-            {
-               x_0 = atof(t_value);
-            }
+               polytropicK = atof(t_value);
+            }                        
          }
       }
             
