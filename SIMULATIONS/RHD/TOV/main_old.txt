@@ -1,0 +1,25 @@
+#include"main.h"
+double function(double x, double y);
+
+int test_module(){
+    rk_order=2;
+    rk_ rk;
+    int j;
+    rk.h=(x1max-x1min)/(Nx1-2*gc);
+    for (int i=gc; i<=Nx1-gc; i++){
+        //Mi contador "extra" en 0 y no en ghost cells
+        j=i-gc;
+        //Que U empiece en i=gc es el primer valor en ser impreso en .dat
+        //Es decir U(gc) es la condición inicial pues el valor impreso de x es x1min
+        //Condición inicial
+        rk.u0=U(2,i);
+        rk.f=function(grid.X1[i], rk.u0);
+        Runge_Kutta(&rk, 1);
+        rk.f=function(grid.X1[i]+rk.h, rk.u1);
+        Runge_Kutta(&rk, 2);
+        U(2,i+1)=rk.u2;
+    }
+}
+double function(double x, double y){
+    return(1);
+}

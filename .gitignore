@@ -6,9 +6,7 @@
 *.ind
 *.ilg
 *.pdf
-*.png
 *.html
-*.dat
 *.tar.gz
 *.eps
 *.out
@@ -18,7 +16,6 @@
 *.bak
 *.o
 fort.*
-*.jpg
 
 SIMULATIONS/**/aztekas
 SIMULATIONS/**/TEST/
