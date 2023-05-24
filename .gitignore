@@ -2,6 +2,9 @@
 *.log
 *.aux
 *.toc
+*.dat
+*.png
+*.jpeg
 *.idx
 *.ind
 *.ilg
