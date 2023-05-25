@@ -26,6 +26,10 @@
 #define PI 3.141592653589
 #define MB 2 //barionic mass
 
-int test_module();
+int buildModel();
+double  interior_ode(double x, double y[], int i);
+double  taylor_ode(double x, double y[], int i);
+
 double eos(double valor, int i);
+
 float massDensity, polytropicExp, polytropicK;
