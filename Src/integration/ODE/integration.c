@@ -12,5 +12,5 @@
 void ODE_Integration()
 {
    // Function for testing the ODE module.
-   test_module();
+   buildModel();
 }
