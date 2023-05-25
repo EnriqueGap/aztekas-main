@@ -82,12 +82,12 @@ INT = Standard
 # All user *.c are written here
 ##################################################
 
-USR = initial.c \
-      user_boundaries.c \
-		user_input.c \
-			wd_ode.c \
-				main.c \
-					eos.c
+USR = eos.c \
+		wd_ode.c \
+			initial.c \
+				user_input.c \
+					buildModel.c \
+						user_boundaries.c
 
 ##################################################
 # Include a global Makefile in the /Src/ 
