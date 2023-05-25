@@ -23,7 +23,7 @@ void Equation_System_Solver()
 
 #if TOV == TRUE
 
-   ODE_Integration();
+   buildModel();
 
 #endif
 
