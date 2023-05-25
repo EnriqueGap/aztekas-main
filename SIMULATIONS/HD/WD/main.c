@@ -1,8 +1,6 @@
 #include"main.h"
 
-double  g(double x, double y[], int i);
-
-int test_module(){
+int buildModel(){
     rk_order=2;
     rk_ rk;
     int j,k;
@@ -21,7 +19,7 @@ int test_module(){
         //y i-ésima
         for(k=0; k<=VX1; k++) y[k]=U(k,i);
         //Calculo de F con y i-ésima
-        for(k=0; k<=VX1; k++) f[k]=g(grid.X1[i], y, k);
+        for(k=0; k<=VX1; k++) f[k]=interior_ode(grid.X1[i], y, k);
         //Para calcular y + rk.h*f hacemos
         for(k=0; k<=VX1; k++){
             //y i-ésima
@@ -35,7 +33,7 @@ int test_module(){
         }
         u1[RHO]=eos(u1[PRE], RHO);
         //F(y+ rk.h+f)
-        for(k=0; k<=VX1; k++) f[k]=g(grid.X1[i]+rk.h, u1, k);
+        for(k=0; k<=VX1; k++) f[k]=interior_ode(grid.X1[i]+rk.h, u1, k);
         //Calculo del paso final
         for(k=0; k<=VX1; k++){
             //y-iésima
@@ -51,17 +49,13 @@ int test_module(){
         }
         u2[RHO]=eos(u2[PRE], RHO);
         if (u2[RHO]!=u2[RHO]){
-            i=Nx1;
+            u2[RHO]=0;
+            u2[PRE]=0;
+            u2[MB]=U(MB,i);
         }
         //Paso a U i+1
         for(k=0; k<=VX1; k++) U(k,i+1)=u2[k];
     }
-}
-double  g(double x, double y[], int i){
-    //eos(x,y,RHO);
-    if (i==RHO) return 0;                               //no ode for rho
-    if (i==PRE) return(-y[RHO]*y[MB]*G_cgs/pow(x,2));	//dP/dr
-    if (i==MB) 	return(4*PI*pow(x,2)*y[RHO]);	        //dm/dr
 }
 /*
 #define RHO       0
