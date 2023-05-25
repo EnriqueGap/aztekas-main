@@ -28,17 +28,17 @@ binary = 0
 %%%%%%%%%%%%%%%
 % DEFINE MESH %
 %%%%%%%%%%%%%%%
-Nx1 = 4000000
+Nx1 = 40000
 Nx2 = 0
 Nx3 = 0
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 % DEFINE DOMAIN LIMITS %
 %%%%%%%%%%%%%%%%%%%%%%%%
-x1max = 5000000000
+x1max = 1500000000
 x2max = 1.0
 x3max = 1.0 
-x1min = 1.0
+x1min = 0.0
 x2min = 0.0
 x3min = 0.0
 
@@ -68,10 +68,10 @@ K = 1.6666666666666666
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % massDensity
-massDensity = 1E6
+massDensity = 9.5E6
 % Politopic Equation P = K*rho^gamma
 
-polytropicExp = 1.6666666666
-polytropicK = 3.119E12
+polytropicExp = 1.33333333
+polytropicK = 4.883E14
 
-% o los pares (1.33333333, 4.883E14) y (1.5, 3.7E13)
+% o los pares (1.33333333, 4.883E14), (1.5, 3.7E13), (1.6666666666, 3.119E12)
