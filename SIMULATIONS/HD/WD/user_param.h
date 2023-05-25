@@ -27,9 +27,9 @@
 #define MB 2 //barionic mass
 
 int buildModel();
-double  interior_ode(double x, double y[], int i);
-double  taylor_ode(double x, double y[], int i);
+float  interior_ode(double x, double y[], int i);
+float  taylor_ode(double x, double y[], int i);
 
-double eos(double valor, int i);
+float eos(double valor, int i);
 
 float massDensity, polytropicExp, polytropicK;
