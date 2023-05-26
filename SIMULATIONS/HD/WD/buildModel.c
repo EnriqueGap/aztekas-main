@@ -1,9 +1,12 @@
 #include"main.h"
 
 int buildModel(){
+    //gc = ghost cells
     for (int i=gc; i<=Nx1-gc; i++){
 
         if (i==gc){
+            //When i==gc, radius=0
+            //solve the ODE using Taylor Expansion for dP/dr
             ODE_Integration(i, 3, taylor_ode);
         }
         else{
