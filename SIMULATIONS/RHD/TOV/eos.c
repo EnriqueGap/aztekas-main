@@ -1,13 +1,15 @@
 #include"main.h"
-double eos(double valor, int i)
+float eos(float valor, int i)
 {
-    //double Gamma=1.6666666666, k=3.119E12;
-    //double Gamma=1.33333333, k=4.883E14;
-    double Gamma=1.5, k=3.7E13;
-    if(i==PRE){
-        return k*pow(valor,Gamma);
+    float mass_density;
+    if(i==PRE){//Compute the pressure given a mass density
+        return(polytropicK*pow(valor,polytropicExp));
     }
-    if(i==RHO){
-        return pow(valor/k,1/Gamma);
+    if(i==RHO){//Compute the energy density given the pressure
+        mass_density = pow(valor/polytropicK,1/polytropicExp);
+        return(polytropicK*pow(mass_density,polytropicExp)/(polytropicExp-1) + mass_density*c_cgs*c_cgs);
+    }
+    if(i==RHOB){//Compute the energy density given the mass density
+        return(polytropicK*pow(valor,polytropicExp)/(polytropicExp-1) + valor*c_cgs*c_cgs);
     }
 }

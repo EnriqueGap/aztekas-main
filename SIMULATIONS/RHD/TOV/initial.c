@@ -21,83 +21,11 @@ void Initial()
    /////////////////////////////
    //-------Riemann-1D--------//
    /////////////////////////////
-   density = 1E6;
    for(int i = 0; i <= Nx1; i++)
    {
-      U(RHO,i) = density;
-      U(PRE,i) = eos(density,PRE);
-      U(VX1,i) = 0;
+      U(RHO,i) = eos(massDensity,RHOB);
+      U(PRE,i) = eos(massDensity,PRE);
+      U(MB,i) = 0;
    }
-
-#elif DIM == 2
-
-   /////////////////////////////
-   //-------Riemann-2D--------//
-   /////////////////////////////
-
-   #if INTERFACE == HORIZONTAL
-   for(int j = 0; j <= Nx2; j++)
-   {
-      for(int i = 0; i <= Nx1; i++)
-      {
-         if(grid.X1[i] < x_0)
-         {
-            U(RHO,i,j) = 0;
-            U(PRE,i,j) = 0;
-            U(VX1,i,j) = 0;
-            U(VX2,i,j) = 0;
-         }
-         else 
-         {
-            U(RHO,i,j) = 0;
-            U(PRE,i,j) = 0;
-            U(VX1,i,j) = 0;
-            U(VX2,i,j) = 0;
-         }
-      }
-   }
-   #elif INTERFACE == VERTICAL
-   for(int j = 0; j <= Nx2; j++)
-   {
-      for(int i = 0; i <= Nx1; i++)
-      {
-         if(grid.X2[j] > x_0)
-         {
-            U(RHO,i,j) = rhol;
-            U(PRE,i,j) = pl;
-            U(VX1,i,j) = vx1l;
-            U(VX2,i,j) = vx2l;
-         }
-         else 
-         {
-            U(RHO,i,j) = rhor;
-            U(PRE,i,j) = pr;
-            U(VX1,i,j) = vx1r;
-            U(VX2,i,j) = vx2r;
-         }
-      }
-   }
-   #elif INTERFACE == DIAGONAL
-   for(int j = 0; j <= Nx2; j++)
-   {
-      for(int i = 0; i <= Nx1; i++)
-      {
-         if(grid.X1[i] + grid.X2[j] - 1 < 0.0)
-         {
-            U(RHO,i,j) = rhol;
-            U(PRE,i,j) = pl;
-            U(VX1,i,j) = vx1l;
-            U(VX2,i,j) = vx2l;
-         }
-         else 
-         {
-            U(RHO,i,j) = rhor;
-            U(PRE,i,j) = pr;
-            U(VX1,i,j) = vx1r;
-            U(VX2,i,j) = vx2r;
-         }
-      }
-   }
-   #endif
 #endif
 }
