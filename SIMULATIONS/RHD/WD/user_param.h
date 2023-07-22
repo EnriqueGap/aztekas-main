@@ -25,6 +25,7 @@
 
 #define PI 3.141592653589
 #define MB 2 //barionic mass
+#define RHOB 3
 
 int buildModel();
 float  interior_ode(float x, float y[], int i);

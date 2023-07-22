@@ -1,13 +1,4 @@
 #include"main.h"
-/*float eos(float valor, int i)
-{
-    if(i==PRE){
-        return polytropicK*pow(valor,polytropicExp);
-    }
-    if(i==RHO){
-        return pow(valor/polytropicK,1/polytropicExp);
-    }
-}*/
 float eos(float valor, int j)
 {
     float pressure, energy_den, mass_den;
@@ -18,7 +9,6 @@ float eos(float valor, int j)
             if(valor>=coreparam->rho[1]) i=2;
             else if(valor>=coreparam->rho[0]) i=1;
             else i=0;
-            energy_den = coreparam->k[i]*pow(valor,coreparam->gamma[i])/(coreparam->gamma[i]-1) + (1+coreparam->a[i])*valor - coreparam->lambda[i];
             pressure   = coreparam->k[i]*pow(valor,coreparam->gamma[i]) + coreparam->lambda[i];
         }
         else{
@@ -27,23 +17,35 @@ float eos(float valor, int j)
             else if(valor>=crustparam->rho[2]) i=2;
             else if(valor>=crustparam->rho[1]) i=1;
             else i=0;
-            energy_den = crustparam->k[i]*pow(valor,crustparam->gamma[i])/(crustparam->gamma[i]-1) + (1+crustparam->a[i])*valor - crustparam->lambda[i];
             pressure   = crustparam->k[i]*pow(valor,crustparam->gamma[i]) + crustparam->lambda[i];
         }
         return pressure*pow(c_cgs,2);
     }
-
-    if(j==RHO){//If we know the pressure and we want the mass density
-        printf("\n%.8E\n",valor);
+    if(j==RHOB){//If we know the mass density and we want the energy density
+        if (valor>=coreparam->rho0){
+            if(valor>=coreparam->rho[1]) i=2;
+            else if(valor>=coreparam->rho[0]) i=1;
+            else i=0;
+            energy_den = coreparam->k[i]*pow(valor,coreparam->gamma[i])/(coreparam->gamma[i]-1) + (1+coreparam->a[i])*valor - coreparam->lambda[i];
+        }
+        else{
+            if(valor>=crustparam->rho[4]) i=4;
+            else if(valor>=crustparam->rho[3]) i=3;
+            else if(valor>=crustparam->rho[2]) i=2;
+            else if(valor>=crustparam->rho[1]) i=1;
+            else i=0;
+            energy_den = crustparam->k[i]*pow(valor,crustparam->gamma[i])/(crustparam->gamma[i]-1) + (1+crustparam->a[i])*valor - crustparam->lambda[i];
+        }
+        return energy_den*pow(c_cgs,2);
+    }
+    if(j==RHO){//If we know the pressure and we want the energy density
         pressure = valor/pow(c_cgs,2);
-        printf("\n%.8E\n",pressure);
-        printf("\n%.8E\n",coreparam->pre[2]);
-        printf("\n%.8E\n",coreparam->pre0);
         if (pressure>=coreparam->pre0){
             if(pressure>=coreparam->pre[1]) i=2;
             else if(pressure>=coreparam->pre[0]) i=1;
             else i=0;
             mass_den = pow((pressure - coreparam->lambda[i])/coreparam->k[i], 1/coreparam->gamma[i]);
+            energy_den = coreparam->k[i]*pow(mass_den,coreparam->gamma[i])/(coreparam->gamma[i]-1) + (1+coreparam->a[i])*mass_den - coreparam->lambda[i];
         }
         else{
             if(pressure>=crustparam->pre[4]) i=4;
@@ -52,10 +54,9 @@ float eos(float valor, int j)
             else if(pressure>=crustparam->pre[1]) i=1;
             else i=0;
             mass_den = pow((pressure - crustparam->lambda[i])/crustparam->k[i], 1/crustparam->gamma[i]);
+            energy_den = crustparam->k[i]*pow(mass_den,crustparam->gamma[i])/(crustparam->gamma[i]-1) + (1+crustparam->a[i])*mass_den - crustparam->lambda[i];
         }
-        printf("\n%.8E\n",massDensity);
-        printf("\n%.8E\n",mass_den);
-        return mass_den;
+        return energy_den*pow(c_cgs,2);
     }
 }
 void makeCrust()

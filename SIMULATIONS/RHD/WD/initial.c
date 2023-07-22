@@ -28,7 +28,7 @@ void Initial()
    /////////////////////////////
    for(int i = 0; i <= Nx1; i++)
    {
-      U(RHO,i) = massDensity;
+      U(RHO,i) = eos(massDensity,RHOB);
       U(PRE,i) = eos(massDensity,PRE);
       U(MB,i) = 0;
    }
