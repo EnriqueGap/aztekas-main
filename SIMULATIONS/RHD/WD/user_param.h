@@ -28,10 +28,10 @@
 #define RHOB 3
 
 int buildModel();
-float  interior_ode(float x, float y[], int i);
-float  taylor_ode(float x, float y[], int i);
+double  interior_ode(float x, double y[], int i);
+double  taylor_ode(float x, double y[], int i);
 
-float eos(float valor, int i);
+double eos(double valor, int i);
 
 float massDensity, polytropicExp, polytropicK;
 

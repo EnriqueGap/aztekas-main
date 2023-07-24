@@ -1,5 +1,5 @@
 #include"main.h"
-float eos(float valor, int i)
+double eos(double valor, int i)
 {
     if(i==PRE){
         return polytropicK*pow(valor,polytropicExp);

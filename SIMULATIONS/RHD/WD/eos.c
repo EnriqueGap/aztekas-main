@@ -1,5 +1,18 @@
 #include"main.h"
-float eos(float valor, int j)
+double eos(double valor, int i)
+{
+    if(i==PRE){
+        return polytropicK*pow(valor,polytropicExp);
+    }
+    if(i==RHO){
+        float eos_mass_density = pow(valor/polytropicK,1/polytropicExp);
+        return eos_mass_density*pow(c_cgs, 2) + valor/(polytropicExp -1);
+    }
+    if(i==RHOB){
+        return valor*pow(c_cgs, 2) + polytropicK*pow(valor,polytropicExp)/(polytropicExp -1);
+    }
+}
+/*float eos(float valor, int j)
 {
     float pressure, energy_den, mass_den;
     int i;
@@ -58,7 +71,7 @@ float eos(float valor, int j)
         }
         return energy_den*pow(c_cgs,2);
     }
-}
+}*/
 void makeCrust()
 {
     sly4crust.rho[4]=5.317E11, sly4crust.rho[3]=3.350E11, sly4crust.rho[2]=1.826E8, sly4crust.rho[1]=6.285E5, sly4crust.rho[0]=0;
