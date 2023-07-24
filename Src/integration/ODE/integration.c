@@ -9,12 +9,12 @@
 
 #include"main.h"
 
-void ODE_Integration(int i, int neq, float (*ODESystem)(float x, float y[], int i))
+void ODE_Integration(int i, int neq, double (*ODESystem)(float x, double y[], int i))
 {
    rk_order=2;
    rk_ rk;
    rk.h=(x1max-x1min)/(Nx1-2*gc);
-   float y[neq], f[neq], u1[neq], u2[neq];
+   double y[neq], f[neq], u1[neq], u2[neq];
    int k;
    for(k=0; k<neq; k++) y[k]=U(k,i);
    //Calculo de F con y i-ésima

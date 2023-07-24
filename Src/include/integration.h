@@ -41,7 +41,7 @@ void Equation_System_Solver();
  
 void Hyperbolic_Integration();
 
-void ODE_Integration(int i, int neq, float (*ODESystem)(float x, float y[], int i));
+void ODE_Integration(int i, int neq, double (*ODESystem)(float x, double y[], int i));
  
 void Runge_Kutta(rk_ *rk, int order);
  
